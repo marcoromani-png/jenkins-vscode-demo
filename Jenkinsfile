@@ -4,19 +4,21 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo 'Checkout del repository completato'
+                echo 'Repository recuperato correttamente'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Build del progetto demo'
+                echo 'Simulazione build'
+                sh 'ls -la'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Esecuzione test demo'
+                echo 'Simulazione test'
+                sh 'echo Test eseguiti correttamente'
             }
         }
     }
