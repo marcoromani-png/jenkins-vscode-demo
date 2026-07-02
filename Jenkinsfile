@@ -1,24 +1,30 @@
+@Library('my-shared-library') _
+
 pipeline {
     agent any
 
     stages {
         stage('Checkout') {
             steps {
-                echo 'Repository recuperato correttamente'
+                echo 'Checkout del repository applicativo completato'
+            }
+        }
+
+        stage('Call Shared Library') {
+            steps {
+                sayHello()
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Simulazione build'
-                sh 'ls -la'
+                echo 'Build del progetto demo'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Simulazione test'
-                sh 'echo Test eseguiti correttamente'
+                echo 'Esecuzione test demo'
             }
         }
     }
