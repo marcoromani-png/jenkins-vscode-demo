@@ -35,6 +35,36 @@ pipeline {
 
 
 
+
+        stage('Count characters in episodes') {
+            steps {
+                script {
+                    def characterStats = countCharactersInEpisodes(episodes)
+                    echo "Totale character distinti trovati: ${characterStats.size()}"
+                }
+            }
+        }
+
+        /*stage('Print result') {
+            steps {
+                script {
+                    echo 'Risultato finale character count:'
+
+                    characterStats
+                        .sort { a, b -> b.value.count <=> a.value.count }
+                        .each { characterUrl, data ->
+                            echo "Character: ${characterUrl}"
+                            echo "Compare in episodi: ${data.count}"
+                            echo "Episodi: ${data.episodes.join(', ')}"
+                            echo '-----------------------------'
+                        }
+                }
+            }
+        }*/
+
+
+
+
    
         /*stage('Call REST API') {
             steps {
