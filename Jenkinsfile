@@ -60,7 +60,7 @@ pipeline {
         stage('Call REST API') {
             steps {
                 script {
-                    def count = sayHTTP('https://api.restful-api.dev/objects')
+                    def count = countApiObjects('https://api.restful-api.dev/objects')
 
                     echo "RISULTATO FINALE: l array contiene ${count} oggetti"
                 }
