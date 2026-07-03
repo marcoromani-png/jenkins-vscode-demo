@@ -36,7 +36,7 @@ pipeline {
 
 
    
-        stage('Call REST API') {
+        /*stage('Call REST API') {
             steps {
                 script {
                     def count = countApiObjects('https://api.restful-api.dev/objects')
@@ -71,7 +71,7 @@ pipeline {
             steps {
                 echo 'Esecuzione test demo'
             }
-        }
+        }*/
     }
 
     // Azioni da eseguire dopo la pipeline
