@@ -62,7 +62,7 @@ pipeline {
                 script {
                     def count = countApiObjects('https://api.restful-api.dev/objects')
 
-                    echo "L array contiene ${count} oggetti"
+                    //echo "L array contiene ${count} oggetti"
                 }
             }
         }
@@ -73,7 +73,7 @@ pipeline {
                 script {
                     def totalCost = calculateTotalCost(API_URL)
 
-                    echo "Il costo totale degli oggetti è ${totalCost}"
+                    //echo "Il costo totale degli oggetti è ${totalCost}"
                 }
             }
         }
