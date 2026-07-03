@@ -62,11 +62,22 @@ pipeline {
                 script {
                     def count = countApiObjects('https://api.restful-api.dev/objects')
 
-                    echo "RISULTATO FINALE: l array contiene ${count} oggetti"
+                    echo "L array contiene ${count} oggetti"
                 }
             }
         }
     
+
+        stage('Calculate Total Cost') {
+            steps {
+                script {
+                    def totalCost = calculateTotalCost(API_URL)
+
+                    echo "Il costo totale degli oggetti è ${totalCost}"
+                }
+            }
+        }
+
 
 
         // Quarto stage: simulazione della build
