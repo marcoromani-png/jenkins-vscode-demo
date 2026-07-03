@@ -9,7 +9,7 @@ pipeline {
     // Inserimento dell'API-URL
     environment {
         API_URL = 'https://api.restful-api.dev/objects'
-        EPISODES_API_URL = 'https://api.restful-api.dev/episodes'
+        EPISODES_API_URL = 'https://api.attackontitanapi.com/episodes'
     }
 
     // Elenco delle fasi della pipeline
