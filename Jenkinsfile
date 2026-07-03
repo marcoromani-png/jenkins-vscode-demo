@@ -56,7 +56,7 @@ pipeline {
 
 
 
-    stages {
+   
         stage('Call REST API') {
             steps {
                 script {
@@ -66,7 +66,7 @@ pipeline {
                 }
             }
         }
-    }
+    
 
 
         // Quarto stage: simulazione della build
