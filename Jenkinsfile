@@ -22,11 +22,11 @@ pipeline {
         }
 
         // Secondo stage: richiama una funzione della Shared Library
-        stage('Call Shared Library') {
+        /*stage('Call Shared Library') {
             steps {
                 sayHello()
             }
-        }
+        }*/
 
         // Terzo stage: richiamo l'API
          /*stage('Call API endpoint') {
