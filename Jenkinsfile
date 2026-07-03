@@ -26,7 +26,7 @@ pipeline {
     stage('Get all episodes') {
             steps {
                 script {
-                    episodes = getAllEpisodes(env.EPISODES_API_URL)
+                    def episodes = getAllEpisodes(env.EPISODES_API_URL)
 
                     echo "Totale episodi recuperati: ${episodes.size()}"
                 }
