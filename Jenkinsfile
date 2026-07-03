@@ -45,7 +45,7 @@ pipeline {
             }
         }
 
-        /*stage('Print result') {
+        stage('Print result') {
             steps {
                 script {
                     echo 'Risultato finale character count:'
@@ -60,7 +60,7 @@ pipeline {
                         }
                 }
             }
-        }*/
+        }
 
 
 
