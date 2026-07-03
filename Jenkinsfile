@@ -29,7 +29,7 @@ pipeline {
         }
 
         // Terzo stage: richiamo l'API
-         stage('Call API endpoint') {
+         /*stage('Call API endpoint') {
             steps {
                 script {
                     echo "Chiamo API: ${API_URL}"
@@ -52,7 +52,22 @@ pipeline {
                     echo "RISULTATO FINALE: l array contiene ${countObjects} oggetti"
                 }
             }
+        }*/
+
+
+
+    stages {
+        stage('Call REST API') {
+            steps {
+                script {
+                    def count = sayHTTP('https://api.restful-api.dev/objects')
+
+                    echo "RISULTATO FINALE: l array contiene ${count} oggetti"
+                }
+            }
         }
+    }
+
 
         // Quarto stage: simulazione della build
         stage('Build') {
