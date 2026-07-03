@@ -32,7 +32,7 @@ pipeline {
          stage('Call API endpoint') {
             steps {
                 script {
-                    echo "Chiamo API: ${API_URL}"
+                    /*echo "Chiamo API: ${API_URL}"
 
                     def response = httpRequest(
                         url: API_URL,
@@ -41,10 +41,10 @@ pipeline {
                         validResponseCodes: '200'
                     )
 
-                    echo "Status code: ${response.status}"
+                    echo "Status code: ${response.status}"*/
 
-                    /*echo 'Converto il body JSON in oggetto Groovy'
-                    def body = readJSON text: response.content*/
+                    echo 'Converto il body JSON in oggetto Groovy'
+                    def body = readJSON text: response.content
 
                     echo 'Conto gli oggetti presenti nell array'
                     def countObjects = body.size()
