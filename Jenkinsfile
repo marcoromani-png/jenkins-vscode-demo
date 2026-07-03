@@ -9,6 +9,7 @@ pipeline {
     // Inserimento dell'API-URL
     environment {
         API_URL = 'https://api.restful-api.dev/objects'
+        EPISODES_API_URL = 'https://api.restful-api.dev/episodes'
     }
 
     // Elenco delle fasi della pipeline
@@ -21,38 +22,16 @@ pipeline {
             }
         }
 
-        // Secondo stage: richiama una funzione della Shared Library
-        /*stage('Call Shared Library') {
-            steps {
-                sayHello()
-            }
-        }*/
 
-        // Terzo stage: richiamo l'API
-         /*stage('Call API endpoint') {
+    stage('Get all episodes') {
             steps {
                 script {
-                    echo "Chiamo API: ${API_URL}"
+                    episodes = getAllEpisodes(env.EPISODES_API_URL)
 
-                    def response = httpRequest(
-                        url: API_URL,
-                        httpMode: 'GET',
-                        acceptType: 'APPLICATION_JSON',
-                        validResponseCodes: '200'
-                    )
-
-                    echo "Status code: ${response.status}"
-
-                    echo 'Converto il body JSON in oggetto Groovy'
-                    def body = readJSON text: response.content
-
-                    echo 'Conto gli oggetti presenti nell array'
-                    def countObjects = body.size()
-
-                    echo "RISULTATO FINALE: l array contiene ${countObjects} oggetti"
+                    echo "Totale episodi recuperati: ${episodes.size()}"
                 }
             }
-        }*/
+        }
 
 
 
