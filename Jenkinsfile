@@ -41,7 +41,7 @@ pipeline {
                         validResponseCodes: '200'
                     )
 
-                    //echo "Status code: ${response.status}"
+                    echo "Status code: ${response.status}"
 
                     /*echo 'Converto il body JSON in oggetto Groovy'
                     def body = readJSON text: response.content*/
