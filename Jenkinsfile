@@ -63,7 +63,7 @@ pipeline {
                             echo "Episodi: ${data.episodes.join(', ')}"
                             echo '-----------------------------'
                         }
-
+                    }
                 }
             }
         }
