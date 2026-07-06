@@ -4,6 +4,7 @@
 
 // Variabili condivise tra gli stage
 def episodes = []
+def characterNames = [:]
 def characterStats = [:]
 
 
@@ -29,33 +30,38 @@ pipeline {
         }
 
 
-    stage('Get all episodes') {
+
+        stage('Get all characters') {
             steps {
                 script {
-                     
-                    echo 'Inizio recupero episodi'
+                    echo 'Recupero characters'
 
-                    episodes = getAllEpisodes(env.EPISODES_API_URL)
+                    characterNames = getAllCharacters(env.EPISODES_API_URL)
 
-                    echo "Totale episodi recuperati: ${episodes.size()}"
-
+                    echo "Totale characters caricati: ${characterNames.size()}"
                 }
             }
         }
 
 
 
-
         stage('Count characters in episodes') {
             steps {
                 script {
-                     
-                    echo 'Inizio conteggio characters'
+                    echo 'Conteggio characters'
 
-                    characterStats = countCharactersInEpisodes(episodes)
+                    characterStats = countCharactersInEpisodes(episodes, characterNames)
 
                     echo "Totale character distinti trovati: ${characterStats.size()}"
+                }
+            }
+        }
 
+
+   
+       stage('Print result') {
+            steps {
+                script {
                     echo 'Stampa risultato finale'
 
                     for (characterUrl in characterStats.keySet()) {
@@ -64,12 +70,11 @@ pipeline {
 
                         echo "Character: ${data.name}"
                         echo "Compare in episodi: ${data.count}"
-                       // echo "Episodi: ${data.episodes.join(', ')}"
-
+                    }
                 }
             }
         }
-        }
+
 
 
 
