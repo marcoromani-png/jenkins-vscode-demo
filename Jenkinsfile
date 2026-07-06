@@ -1,6 +1,11 @@
 // Carica la Shared Library configurata in Jenkins
 @Library('my-shared-library') _
 
+
+def episodes = []
+def characterStats = [:]
+
+
 pipeline {
     // Esegue la pipeline su qualsiasi agente disponibile
     agent any
