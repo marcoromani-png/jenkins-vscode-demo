@@ -72,12 +72,12 @@ pipeline {
 
                     def output = ''
 
-                    output += '\n==============================\n'
-                    output += 'RISULTATO FINALE\n'
-                    output += '==============================\n'
+                    //output += '\n==============================\n'
+                    //output += 'RISULTATO FINALE\n'
+                    //output += '==============================\n'
                     output += "Totale episodi recuperati: ${episodes.size()}\n"
                     output += "Totale character distinti trovati: ${characterStats.size()}\n"
-                    output += '------------------------------\n\n'
+                    //output += '------------------------------\n\n'
 
                     for (characterUrl in characterStats.keySet()) {
 
@@ -85,7 +85,7 @@ pipeline {
 
                         output += "Character: ${data.name}\n"
                         output += "Compare in episodi: ${data.count}\n"
-                        output += '------------------------------\n'
+
                     }
 
                     echo output
