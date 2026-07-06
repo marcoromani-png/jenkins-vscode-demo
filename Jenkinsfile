@@ -2,9 +2,6 @@
 @Library('my-shared-library') _
 
 
-def episodes = []
-def characterStats = [:]
-
 
 pipeline {
     // Esegue la pipeline su qualsiasi agente disponibile
@@ -31,9 +28,13 @@ pipeline {
     stage('Get all episodes') {
             steps {
                 script {
-                     episodes = getAllEpisodes(env.EPISODES_API_URL)
+                     
+                    echo 'Inizio recupero episodi'
+
+                    def episodes = getAllEpisodes(env.EPISODES_API_URL)
 
                     echo "Totale episodi recuperati: ${episodes.size()}"
+
                 }
             }
         }
@@ -44,26 +45,24 @@ pipeline {
         stage('Count characters in episodes') {
             steps {
                 script {
-                     characterStats = countCharactersInEpisodes(episodes)
+                     
+                    echo 'Inizio conteggio characters'
+
+                    def characterStats = countCharactersInEpisodes(episodes)
+
                     echo "Totale character distinti trovati: ${characterStats.size()}"
-                }
-            }
-        }
 
-        
-        stage('Print result') {
-            steps {
-                script {
-                    echo 'Risultato finale character count:'
+                    echo 'Stampa risultato finale'
 
-                    characterStats.each { characterUrl, data ->
-                        if (data != null) {
-                            echo "Character: ${characterUrl}"
-                            echo "Compare in episodi: ${data.count}"
-                            echo "Episodi: ${data.episodes.join(', ')}"
-                            echo '-----------------------------'
-                        }
-                    }
+                    for (characterUrl in characterStats.keySet()) {
+
+                        def data = characterStats[characterUrl]
+
+                        echo "Character: ${characterUrl}"
+                        echo "Compare in episodi: ${data.count}"
+                        echo "Episodi: ${data.episodes.join(', ')}"
+                        echo '-----------------------------'
+
                 }
             }
         }
