@@ -31,6 +31,7 @@ pipeline {
 
 
 
+
         stage('Get all episodes') {
             steps {
                 script {
@@ -42,6 +43,7 @@ pipeline {
                 }
             }
         }
+
 
 
 
@@ -63,21 +65,34 @@ pipeline {
 
    
    
+        
         stage('Print result') {
             steps {
                 script {
-                    echo 'Stampa risultato finale'
+
+                    def output = ''
+
+                    output += '\n==============================\n'
+                    output += 'RISULTATO FINALE\n'
+                    output += '==============================\n'
+                    output += "Totale episodi recuperati: ${episodes.size()}\n"
+                    output += "Totale character distinti trovati: ${characterStats.size()}\n"
+                    output += '------------------------------\n\n'
 
                     for (characterUrl in characterStats.keySet()) {
 
                         def data = characterStats[characterUrl]
 
-                        echo "Character: ${data.name}"
-                        echo "Compare in episodi: ${data.count}"
+                        output += "Character: ${data.name}\n"
+                        output += "Compare in episodi: ${data.count}\n"
+                        output += '------------------------------\n'
                     }
+
+                    echo output
                 }
             }
         }
+
 
 
 
