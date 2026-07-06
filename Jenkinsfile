@@ -31,7 +31,7 @@ pipeline {
     stage('Get all episodes') {
             steps {
                 script {
-                    def episodes = getAllEpisodes(env.EPISODES_API_URL)
+                     episodes = getAllEpisodes(env.EPISODES_API_URL)
 
                     echo "Totale episodi recuperati: ${episodes.size()}"
                 }
@@ -44,7 +44,7 @@ pipeline {
         stage('Count characters in episodes') {
             steps {
                 script {
-                    def characterStats = countCharactersInEpisodes(episodes)
+                     characterStats = countCharactersInEpisodes(episodes)
                     echo "Totale character distinti trovati: ${characterStats.size()}"
                 }
             }
