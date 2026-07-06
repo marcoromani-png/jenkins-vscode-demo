@@ -50,19 +50,20 @@ pipeline {
             }
         }
 
+        
         stage('Print result') {
             steps {
                 script {
                     echo 'Risultato finale character count:'
 
-                    characterStats
-                        .sort { a, b -> b.value.count <=> a.value.count }
-                        .each { characterUrl, data ->
+                    characterStats.each { characterUrl, data ->
+                        if (data != null) {
                             echo "Character: ${characterUrl}"
                             echo "Compare in episodi: ${data.count}"
                             echo "Episodi: ${data.episodes.join(', ')}"
                             echo '-----------------------------'
                         }
+
                 }
             }
         }
