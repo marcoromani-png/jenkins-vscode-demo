@@ -2,6 +2,10 @@
 @Library('my-shared-library') _
 
 
+// Variabili condivise tra gli stage
+def episodes = []
+def characterStats = [:]
+
 
 pipeline {
     // Esegue la pipeline su qualsiasi agente disponibile
@@ -31,7 +35,7 @@ pipeline {
                      
                     echo 'Inizio recupero episodi'
 
-                    def episodes = getAllEpisodes(env.EPISODES_API_URL)
+                    episodes = getAllEpisodes(env.EPISODES_API_URL)
 
                     echo "Totale episodi recuperati: ${episodes.size()}"
 
@@ -48,7 +52,7 @@ pipeline {
                      
                     echo 'Inizio conteggio characters'
 
-                    def characterStats = countCharactersInEpisodes(episodes)
+                    characterStats = countCharactersInEpisodes(episodes)
 
                     echo "Totale character distinti trovati: ${characterStats.size()}"
 
