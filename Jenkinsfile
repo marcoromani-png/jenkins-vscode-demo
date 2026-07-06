@@ -17,6 +17,7 @@ pipeline {
     environment {
         API_URL = 'https://api.restful-api.dev/objects'
         EPISODES_API_URL = 'https://api.attackontitanapi.com/episodes'
+
     }
 
     // Elenco delle fasi della pipeline
@@ -31,17 +32,19 @@ pipeline {
 
 
 
-        stage('Get all characters') {
+        stage('Get all episodes') {
             steps {
                 script {
-                    echo 'Recupero characters'
+                    echo 'Recupero episodi'
 
-                    characterNames = getAllCharacters(env.EPISODES_API_URL)
+                    episodes = getAllEpisodes(env.EPISODES_API_URL)
 
-                    echo "Totale characters caricati: ${characterNames.size()}"
+                    echo "Totale episodi recuperati: ${episodes.size()}"
                 }
             }
         }
+
+
 
 
 
@@ -50,7 +53,7 @@ pipeline {
                 script {
                     echo 'Conteggio characters'
 
-                    characterStats = countCharactersInEpisodes(episodes, characterNames)
+                    characterStats = countCharactersInEpisodes(episodes)
 
                     echo "Totale character distinti trovati: ${characterStats.size()}"
                 }
@@ -58,8 +61,10 @@ pipeline {
         }
 
 
+
    
-       stage('Print result') {
+   
+        stage('Print result') {
             steps {
                 script {
                     echo 'Stampa risultato finale'
@@ -74,6 +79,7 @@ pipeline {
                 }
             }
         }
+
 
 
 
