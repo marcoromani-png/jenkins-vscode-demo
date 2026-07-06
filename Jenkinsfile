@@ -64,8 +64,7 @@ pipeline {
 
                         echo "Character: ${characterUrl}"
                         echo "Compare in episodi: ${data.count}"
-                        echo "Episodi: ${data.episodes.join(', ')}"
-                       // echo '-----------------------------'
+                       // echo "Episodi: ${data.episodes.join(', ')}"
 
                 }
             }
