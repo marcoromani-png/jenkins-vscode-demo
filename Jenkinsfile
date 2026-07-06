@@ -62,7 +62,7 @@ pipeline {
 
                         def data = characterStats[characterUrl]
 
-                        echo "Character: ${characterUrl.name}"
+                        echo "Character: ${data.name}"
                         echo "Compare in episodi: ${data.count}"
                        // echo "Episodi: ${data.episodes.join(', ')}"
 
