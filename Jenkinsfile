@@ -80,9 +80,10 @@ pipeline {
                     for (characterUrl in characterStats.keySet()) {
 
                         def data = characterStats[characterUrl]
-
+                        output += '------------------------------\n\n'
                         output += "Character: ${data.name}\n"
                         output += "Compare in episodi: ${data.count}\n"
+                        output += '------------------------------\n\n'
 
                     }
 
