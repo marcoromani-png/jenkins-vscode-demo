@@ -4,7 +4,6 @@
 
 // Variabili condivise tra gli stage
 def episodes = []
-def characterNames = [:]
 def characterStats = [:]
 
 
